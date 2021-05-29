@@ -1,2 +1,2 @@
 all:
-	g++ src/*.cpp -o main -lSDL2 -std=c++17
+	g++ src/*.cpp -o chip8 -lSDL2 -std=c++17

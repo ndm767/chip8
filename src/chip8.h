@@ -11,4 +11,12 @@ private:
     void loadRom(std::string rom, int start);
 
     unsigned char* memory;
+
+    unsigned char V[16]; //registers
+    unsigned short int VI; //16 bit register
+
+    unsigned short int PC; //program counter
+    
+    unsigned char SP; //stack pointer
+    unsigned short int stack[16]; //stack
 };

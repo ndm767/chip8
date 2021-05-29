@@ -60,7 +60,8 @@ Chip8::Chip8(std::string romPath){
     //initialize the stack pointer to the bottom of the stack
     SP = static_cast<unsigned char>(0);
 
-
+    //make the emulator loop
+    running = true;
 }
 
 Chip8::~Chip8(){

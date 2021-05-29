@@ -20,4 +20,6 @@ private:
     
     unsigned char SP; //stack pointer
     unsigned short int stack[16]; //stack
+
+    bool running;
 };

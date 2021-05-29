@@ -7,6 +7,7 @@ public:
     Chip8(std::string romPath);
     ~Chip8();
 
+    void run();
 private:
     void loadRom(std::string rom, int start);
 

@@ -11,6 +11,7 @@ int main(int argc, char* argv[]){
     std::string romPath(argv[1]);
 
     Chip8 emu(romPath);
+    emu.run();
 
     return 0;
 }

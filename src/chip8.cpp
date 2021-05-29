@@ -67,3 +67,6 @@ Chip8::~Chip8(){
 
 }
 
+void Chip8::run(){
+    
+}

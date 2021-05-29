@@ -10,7 +10,7 @@ public:
 private:
     void loadRom(std::string rom, int start);
 
-    unsigned char* memory;
+    unsigned char memory[0xFFF+1];
 
     unsigned char V[16]; //registers
     unsigned short int VI; //16 bit register

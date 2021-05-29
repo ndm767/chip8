@@ -29,8 +29,6 @@ void Chip8::loadRom(std::string rom, int start){
 }
 
 Chip8::Chip8(std::string romPath){
-    memory = new unsigned char[0xFFF+1];
-
     //store bitmap font in memory range 0x000-0x050
     unsigned char font[80] = {
         0xF0, 0x90, 0x90, 0x90, 0xF0, //0
@@ -57,9 +55,10 @@ Chip8::Chip8(std::string romPath){
 
     //most programs start at 0x200 but some start at 0x600
     loadRom(romPath, 0x200);
+    PC = 0x200;
 }
 
 Chip8::~Chip8(){
-    delete[] memory;
+
 }
 

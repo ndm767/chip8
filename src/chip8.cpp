@@ -4,7 +4,7 @@
 #include <fstream>
 #include <sstream>
 
-void Chip8::loadRom(std::string rom){
+void Chip8::loadRom(std::string rom, int start){
     std::ifstream f(rom, std::ios_base::in | std::ios_base::binary);
 
     if(!f){
@@ -24,7 +24,7 @@ void Chip8::loadRom(std::string rom){
     }
 
     for(int i = 0; i<fSize; i++){
-        *(memory + 0x200 + i) = insStr[i];
+        *(memory + start + i) = insStr[i];
     }
 }
 
@@ -55,7 +55,8 @@ Chip8::Chip8(std::string romPath){
         memory[i] = font[i];
     }
 
-    loadRom(romPath);
+    //most programs start at 0x200 but some start at 0x600
+    loadRom(romPath, 0x200);
 }
 
 Chip8::~Chip8(){

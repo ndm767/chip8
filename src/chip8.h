@@ -8,7 +8,7 @@ public:
     ~Chip8();
 
 private:
-    void loadRom(std::string rom);
+    void loadRom(std::string rom, int start);
 
     unsigned char* memory;
 };

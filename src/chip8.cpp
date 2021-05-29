@@ -69,5 +69,18 @@ Chip8::~Chip8(){
 }
 
 void Chip8::run(){
-    
+    while(running){
+        unsigned char byte1 = memory[PC];
+        unsigned char byte2 = memory[PC+1];
+        
+        std::cout<<std::hex<<static_cast<int>(byte1)<<" "<<std::hex<<static_cast<int>(byte2)<<std::endl;
+        
+        if(PC > 0xFFF){
+            running = false;
+        }else if(byte1 == 0x00 && byte2 == 0x00){
+            running = false;
+        }
+
+        PC += 2;
+    }   
 }

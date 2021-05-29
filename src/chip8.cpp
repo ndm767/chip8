@@ -56,6 +56,11 @@ Chip8::Chip8(std::string romPath){
     //most programs start at 0x200 but some start at 0x600
     loadRom(romPath, 0x200);
     PC = 0x200;
+
+    //initialize the stack pointer to the bottom of the stack
+    SP = static_cast<unsigned char>(0);
+
+
 }
 
 Chip8::~Chip8(){

@@ -37,6 +37,7 @@ void InsProcessor::ret00EE(){
 
 void InsProcessor::jp1nnn(usint addr){
     //jump to location addr
+    (*PC) = addr;
     std::cout<<"1nnn"<<std::endl;
 }
 

@@ -72,6 +72,9 @@ void InsProcessor::se3xkk(uchar reg, uchar byte){
 
 void InsProcessor::sne4xkk(uchar reg, uchar byte){
     //skip next instruction if v[reg] != byte
+    if(*(V+reg) != byte){
+        *(PC) += 2;
+    }
     std::cout<<"4xkk"<<std::endl;
 }
 

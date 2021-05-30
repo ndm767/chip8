@@ -23,7 +23,7 @@ void Chip8::loadRom(std::string rom, int start){
         std::terminate();
     }
 
-    for(int i = 0; i<fSize; i++){
+    for(std::size_t i = 0; i<fSize; i++){
         *(memory + start + i) = insStr[i];
     }
 }
@@ -86,4 +86,18 @@ void Chip8::run(){
 
 void Chip8::processInstructions(unsigned char byte1, unsigned char byte2){
 
+    unsigned char bytes[] = {
+        static_cast<unsigned char>((byte1>>4)&0xF),
+        static_cast<unsigned char>(byte1&0xF),
+        static_cast<unsigned char>((byte2>>4)&0xF),
+        static_cast<unsigned char>(byte2 & 0xF)
+    };
+    
+    for(int i = 0; i<4; i++){
+        std::cout<<std::hex<<static_cast<int>(bytes[i]);
+        if(i == 1){
+            std::cout<<" ";
+        }
+    }
+    std::cout<<std::endl;
 }

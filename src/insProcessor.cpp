@@ -20,6 +20,7 @@ InsProcessor::~InsProcessor(){
 
 void InsProcessor::cls00E0(){
     //clear display
+    display->clear();
     std::cout<<"00E0"<<std::endl;
 }
 

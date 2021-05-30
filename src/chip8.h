@@ -24,4 +24,21 @@ private:
     unsigned short int stack[16]; //stack
 
     bool running;
+
+    void handle0(unsigned char bytes[4]);
+    void handle1(unsigned char bytes[4]);
+    void handle2(unsigned char bytes[4]);
+    void handle3(unsigned char bytes[4]);
+    void handle4(unsigned char bytes[4]);
+    void handle5(unsigned char bytes[4]);
+    void handle6(unsigned char bytes[4]);
+    void handle7(unsigned char bytes[4]);
+    void handle8(unsigned char bytes[4]);
+    void handle9(unsigned char bytes[4]);
+    void handleA(unsigned char bytes[4]);
+    void handleB(unsigned char bytes[4]);
+    void handleC(unsigned char bytes[4]);
+    void handleD(unsigned char bytes[4]);
+    void handleE(unsigned char bytes[4]);
+    void handleF(unsigned char bytes[4]);
 };

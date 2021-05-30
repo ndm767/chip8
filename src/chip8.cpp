@@ -92,12 +92,58 @@ void Chip8::processInstructions(unsigned char byte1, unsigned char byte2){
         static_cast<unsigned char>((byte2>>4)&0xF),
         static_cast<unsigned char>(byte2 & 0xF)
     };
-    
-    for(int i = 0; i<4; i++){
-        std::cout<<std::hex<<static_cast<int>(bytes[i]);
-        if(i == 1){
-            std::cout<<" ";
-        }
+
+    switch(bytes[0]){
+    case 0x0:
+        handle0(bytes);
+        break;
+    case 0x1:
+        handle1(bytes);
+        break;
+    case 0x2:
+        handle2(bytes);
+        break;
+    case 0x3:
+        handle3(bytes);
+        break;
+    case 0x4:
+        handle4(bytes);
+        break;
+    case 0x5:
+        handle5(bytes);
+        break;
+    case 0x6:
+        handle6(bytes);
+        break;
+    case 0x7:
+        handle7(bytes);
+        break;
+    case 0x8:
+        handle8(bytes);
+        break;
+    case 0x9:
+        handle9(bytes);
+        break;
+    case 0xA:
+        handleA(bytes);
+        break;
+    case 0xB:
+        handleB(bytes);
+        break;
+    case 0xC:
+        handleC(bytes);
+        break;
+    case 0xD:
+        handleD(bytes);
+        break;
+    case 0xE:
+        handleE(bytes);
+        break;
+    case 0xF:
+        handleF(bytes);
+        break;
+    default:
+        std::cout<<"Bad Opcode!"<<std::endl;
+        break;
     }
-    std::cout<<std::endl;
 }

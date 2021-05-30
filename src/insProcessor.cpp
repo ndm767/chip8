@@ -2,13 +2,14 @@
 
 #include <iostream>
 
-InsProcessor::InsProcessor(uchar *mem, uchar *V, usint *VI, usint *PC, uchar *SP, usint *stack){
+InsProcessor::InsProcessor(uchar *mem, uchar *V, usint *VI, usint *PC, uchar *SP, usint *stack, Display *d){
     this->memory = mem;
     this->V = V;
     this->VI = VI;
     this->PC = PC;
     this->SP = SP;
     this->stack = stack;
+    this->display = d;
 }
 
 InsProcessor::~InsProcessor(){

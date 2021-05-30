@@ -29,7 +29,8 @@ void Chip8::loadRom(std::string rom, int start){
 }
 
 Chip8::Chip8(std::string romPath){
-    insProc = new InsProcessor(&memory[0], &V[0], &VI, &PC, &SP, &stack[0]);
+    d = new Display();
+    insProc = new InsProcessor(&memory[0], &V[0], &VI, &PC, &SP, &stack[0], d);
 
     //store bitmap font in memory range 0x000-0x050
     uchar font[80] = {
@@ -72,6 +73,7 @@ Chip8::Chip8(std::string romPath){
 
 Chip8::~Chip8(){
     delete insProc;
+    delete d;
 }
 
 void Chip8::run(){

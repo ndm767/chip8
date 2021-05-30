@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "display.h"
 #include "insProcessor.h"
 
 class Chip8{
@@ -15,6 +16,7 @@ private:
     void processInstructions(uchar byte1, uchar byte2);
 
     InsProcessor *insProc;
+    Display *d;
 
     uchar memory[0xFFF+1];
 

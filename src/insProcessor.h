@@ -1,5 +1,7 @@
 #pragma once
 
+#include "display.h"
+
 typedef unsigned char uchar;
 typedef unsigned short int usint;
 
@@ -11,8 +13,9 @@ private:
     usint *PC;
     uchar *SP;
     usint *stack;
+    Display *display;
 public:
-    InsProcessor(uchar *mem, uchar *V, usint *VI, usint *PC, uchar *SP, usint *stack);
+    InsProcessor(uchar *mem, uchar *V, usint *VI, usint *PC, uchar *SP, usint *stack, Display *d);
     ~InsProcessor();
 
     //actual opcode instructions

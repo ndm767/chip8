@@ -176,65 +176,132 @@ bool Chip8::compBytes(unsigned int bytes[4], std::string instr){
 }
 
 void Chip8::handle0(unsigned int bytes[4]){
-    
+    if(compBytes(bytes, "00E0")){
+        std::cout<<"00E0"<<std::endl;
+    }else if(compBytes(bytes, "00EE")){
+        std::cout<<"00EE"<<std::endl;
+    }else if(compBytes(bytes, "0nnn")){
+        std::cout<<"0nnn"<<std::endl;
+    }
 }
 
 void Chip8::handle1(unsigned int bytes[4]){
-    
+    //we already know its 1nnn
+    std::cout<<"1nnn"<<std::endl;
 }
 
 void Chip8::handle2(unsigned int bytes[4]){
-    
+    //we already know its 2nnn
+    std::cout<<"2nnn"<<std::endl;
 }
 
 void Chip8::handle3(unsigned int bytes[4]){
-    
+    //we already know its 3xkk
+    std::cout<<"3xkk"<<std::endl;
 }
 
 void Chip8::handle4(unsigned int bytes[4]){
-    
+    //we already know its 4xkk
+    std::cout<<"4xkk"<<std::endl;
 }
 
 void Chip8::handle5(unsigned int bytes[4]){
-    
+    if(compBytes(bytes, "5xy0")){
+        std::cout<<"5xy0"<<std::endl;
+    }
 }
 
 void Chip8::handle6(unsigned int bytes[4]){
-    
+    //we already know its 6xkk
+    std::cout<<"6xkk"<<std::endl;
 }
 
 void Chip8::handle7(unsigned int bytes[4]){
-    
+    //we already know its 7xkk
+    std::cout<<"7xkk"<<std::endl;
 }
 
 void Chip8::handle8(unsigned int bytes[4]){
-    
+    if(compBytes(bytes, "8xy0")){
+        std::cout<<"8xy0"<<std::endl;
+    }else if(compBytes(bytes, "8xy1")){
+        std::cout<<"8xy1"<<std::endl;
+    }else if(compBytes(bytes, "8xy2")){
+        std::cout<<"8xy2"<<std::endl;
+    }else if(compBytes(bytes, "8xy3")){
+        std::cout<<"8xy3"<<std::endl;
+    }else if(compBytes(bytes, "8xy4")){
+        std::cout<<"8xy4"<<std::endl;
+    }else if(compBytes(bytes, "8xy5")){
+        std::cout<<"8xy5"<<std::endl;
+    }else if(compBytes(bytes, "8xy6")){
+        std::cout<<"8xy6"<<std::endl;
+    }else if(compBytes(bytes, "8xy7")){
+        std::cout<<"8xy7"<<std::endl;
+    }else if(compBytes(bytes, "8xyE")){
+        std::cout<<"8xyE"<<std::endl;
+    }
+
 }
 
 void Chip8::handle9(unsigned int bytes[4]){
-    
+    if(compBytes(bytes, "9xy0")){
+        std::cout<<"9xy0"<<std::endl;
+    }
 }
 
 void Chip8::handleA(unsigned int bytes[4]){
-    
+    //we already know its Annn
+    std::cout<<"Annn"<<std::endl;
 }
 
 void Chip8::handleB(unsigned int bytes[4]){
-    
+    //we already know its Bnnn
+    std::cout<<"Bnnn"<<std::endl;
 }
 
 void Chip8::handleC(unsigned int bytes[4]){
-    
+    //we already know its Cxkk
+    std::cout<<"Cxkk"<<std::endl;
 }
 
 void Chip8::handleD(unsigned int bytes[4]){
-    
+    //we already know its Dxyn
+    std::cout<<"Dxyn"<<std::endl;
 }
 
 void Chip8::handleE(unsigned int bytes[4]){
-    
+    if(compBytes(bytes, "ExA1")){
+        std::cout<<"ExA1"<<std::endl;
+    }
 }
 
 void Chip8::handleF(unsigned int bytes[4]){
-    
+    if(compBytes(bytes, "Fx07")){
+        std::cout<<"Fx07"<<std::endl;
+    }
+    if(compBytes(bytes, "Fx0A")){
+        std::cout<<"Fx0A"<<std::endl;
+    }
+    if(compBytes(bytes, "Fx15")){
+        std::cout<<"Fx15"<<std::endl;
+    }
+    if(compBytes(bytes, "Fx18")){
+        std::cout<<"Fx18"<<std::endl;
+    }
+    if(compBytes(bytes, "Fx1E")){
+        std::cout<<"Fx1E"<<std::endl;
+    }
+    if(compBytes(bytes, "Fx29")){
+        std::cout<<"Fx29"<<std::endl;
+    }
+    if(compBytes(bytes, "Fx33")){
+        std::cout<<"Fx33"<<std::endl;
+    }
+    if(compBytes(bytes, "Fx55")){
+        std::cout<<"Fx55"<<std::endl;
+    }
+    if(compBytes(bytes, "Fx65")){
+        std::cout<<"Fx65"<<std::endl;
+    }
 }

@@ -108,6 +108,7 @@ void InsProcessor::add7xkk(uchar reg, uchar byte){
 
 void InsProcessor::ld8xy0(uchar reg1, uchar reg2){
     //set v[reg1] = v[reg2]
+    *(V + reg1) = *(V + reg2);
     std::cout<<"8xy0"<<std::endl;
 }
 

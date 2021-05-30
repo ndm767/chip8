@@ -36,8 +36,8 @@ void InsProcessor::ret00EE(){
 /* PREFIX 1 */
 
 void InsProcessor::jp1nnn(usint addr){
-    //jump to location addr
-    (*PC) = addr;
+    //jump to location addr-2 (because the PC increments by 2 at the end of each loop)
+    (*PC) = addr-2;
     std::cout<<"1nnn"<<std::endl;
 }
 
@@ -54,7 +54,7 @@ void InsProcessor::call2nnn(usint addr){
     //put current program counter at top of stack
     *(stack + (*SP)) = (*PC);
     //set program counter to new address
-    (*PC) = addr;
+    (*PC) = addr-2;
     std::cout<<"2nnn"<<std::endl;
 }
 

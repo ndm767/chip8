@@ -92,6 +92,7 @@ void InsProcessor::se5xy0(uchar reg1, uchar reg2){
 
 void InsProcessor::ld6xkk(uchar reg, uchar byte){
     //set v[reg] = byte
+    *(V + reg) = byte;
     std::cout<<"6xkk"<<std::endl;
 }
 

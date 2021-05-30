@@ -196,12 +196,14 @@ void Chip8::handle0(usint bytes[4]){
 
 void Chip8::handle1(usint bytes[4]){
     //we already know its 1nnn
-    insProc->jp1nnn(0);
+    usint addr = ((bytes[1]&0xF)<<8) + ((bytes[2]&0xF)<<4) + (bytes[3]&0xF);
+    insProc->jp1nnn(addr);
 }
 
 void Chip8::handle2(usint bytes[4]){
     //we already know its 2nnn
-    insProc->call2nnn(0);
+    usint addr = ((bytes[1]&0xF)<<8) + ((bytes[2]&0xF)<<4) + (bytes[3]&0xF);
+    insProc->call2nnn(addr);
 }
 
 void Chip8::handle3(usint bytes[4]){
@@ -261,12 +263,14 @@ void Chip8::handle9(usint bytes[4]){
 
 void Chip8::handleA(usint bytes[4]){
     //we already know its Annn
-    insProc->ldAnnn(0);
+    usint addr = ((bytes[1]&0xF)<<8) + ((bytes[2]&0xF)<<4) + (bytes[3]&0xF);
+    insProc->ldAnnn(addr);
 }
 
 void Chip8::handleB(usint bytes[4]){
     //we already know its Bnnn
-    insProc->jpBnnn(0);
+    usint addr = ((bytes[1]&0xF)<<8) + ((bytes[2]&0xF)<<4) + (bytes[3]&0xF);
+    insProc->jpBnnn(addr);
 }
 
 void Chip8::handleC(usint bytes[4]){

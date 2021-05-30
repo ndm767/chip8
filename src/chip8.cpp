@@ -64,6 +64,10 @@ Chip8::Chip8(std::string romPath){
 
     //make the emulator loop
     running = true;
+
+    //timers
+    DT = 0;
+    ST = 0;
 }
 
 Chip8::~Chip8(){

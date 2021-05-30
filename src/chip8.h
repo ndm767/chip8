@@ -26,6 +26,9 @@ private:
     uchar SP; //stack pointer
     usint stack[16]; //stack
 
+    uchar DT; //delay timer
+    uchar ST; //sound timer
+
     bool running;
 
     void handle0(usint bytes[4]);

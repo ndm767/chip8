@@ -11,6 +11,8 @@ public:
 private:
     void loadRom(std::string rom, int start);
 
+    void processInstructions(unsigned char byte1, unsigned char byte2);
+
     unsigned char memory[0xFFF+1];
 
     unsigned char V[16]; //registers

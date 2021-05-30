@@ -73,12 +73,17 @@ void Chip8::run(){
         unsigned char byte1 = memory[PC];
         unsigned char byte2 = memory[PC+1];
         
-        std::cout<<std::hex<<static_cast<int>(byte1)<<" "<<std::hex<<static_cast<int>(byte2)<<std::endl;
-        
+        std::cout<<std::hex<<static_cast<int>(byte1)<<" "<<std::hex<<static_cast<int>(byte2)<<": ";
+        processInstructions(byte1, byte2);
+
         if(PC > 0xFFF){
             running = false;
         }
 
         PC += 2;
     }   
+}
+
+void Chip8::processInstructions(unsigned char byte1, unsigned char byte2){
+
 }

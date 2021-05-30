@@ -126,6 +126,7 @@ void InsProcessor::and8xy2(uchar reg1, uchar reg2){
 
 void InsProcessor::xor8xy3(uchar reg1, uchar reg2){
     //v[reg1] = v[reg1] XOR v[reg2]
+    *(V+reg1) = *(V+reg1) ^ *(V+reg2);
     std::cout<<"8xy3"<<std::endl;
 }
 

@@ -26,6 +26,10 @@ void InsProcessor::cls00E0(){
 
 void InsProcessor::ret00EE(){
     //return from subroutine
+    //set program counter to value at top of stack
+    *PC = *(stack + (*SP));
+    //subtact one from stack pointer
+    (*SP) -= 1;
     std::cout<<"00EE"<<std::endl;
 }
 

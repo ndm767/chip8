@@ -45,6 +45,16 @@ void InsProcessor::jp1nnn(usint addr){
 
 void InsProcessor::call2nnn(usint addr){
     //call subroutine at addr
+    //increment stack pointer
+    if(*SP == static_cast<uchar>(16)){
+        *SP = static_cast<uchar>(0);
+    }else{
+        *SP += 1;
+    }
+    //put current program counter at top of stack
+    *(stack + (*SP)) = (*PC);
+    //set program counter to new address
+    (*PC) = addr;
     std::cout<<"2nnn"<<std::endl;
 }
 

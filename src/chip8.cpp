@@ -77,8 +77,6 @@ void Chip8::run(){
         
         if(PC > 0xFFF){
             running = false;
-        }else if(byte1 == 0x00 && byte2 == 0x00){
-            running = false;
         }
 
         PC += 2;

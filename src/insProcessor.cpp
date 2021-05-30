@@ -114,6 +114,7 @@ void InsProcessor::ld8xy0(uchar reg1, uchar reg2){
 
 void InsProcessor::or8xy1(uchar reg1, uchar reg2){
     //v[reg1] = v[reg1] OR v[reg2]
+    *(V + reg1) = *(V+reg1) | *(V+reg2);
     std::cout<<"8xy1"<<std::endl;
 }
 

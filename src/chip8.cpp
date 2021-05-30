@@ -30,7 +30,7 @@ void Chip8::loadRom(std::string rom, int start){
 
 Chip8::Chip8(std::string romPath){
     //store bitmap font in memory range 0x000-0x050
-    unsigned char font[80] = {
+    uchar font[80] = {
         0xF0, 0x90, 0x90, 0x90, 0xF0, //0
         0x20, 0x60, 0x20, 0x20, 0x70, //1
         0xF0, 0x10, 0xF0, 0x80, 0xF0, //2
@@ -58,7 +58,7 @@ Chip8::Chip8(std::string romPath){
     PC = 0x200;
 
     //initialize the stack pointer to the bottom of the stack
-    SP = static_cast<unsigned char>(0);
+    SP = static_cast<uchar>(0);
 
     //make the emulator loop
     running = true;
@@ -70,8 +70,8 @@ Chip8::~Chip8(){
 
 void Chip8::run(){
     while(running){
-        unsigned char byte1 = memory[PC];
-        unsigned char byte2 = memory[PC+1];
+        uchar byte1 = memory[PC];
+        uchar byte2 = memory[PC+1];
         
         std::cout<<std::hex<<static_cast<int>(byte1)<<" "<<static_cast<int>(byte2)<<": ";
         processInstructions(byte1, byte2);
@@ -84,7 +84,7 @@ void Chip8::run(){
     }   
 }
 
-void Chip8::processInstructions(unsigned char byte1, unsigned char byte2){
+void Chip8::processInstructions(uchar byte1, uchar byte2){
 
     unsigned int bytes[] = {
         static_cast<unsigned int>((byte1>>4)&0xF),
@@ -181,6 +181,7 @@ void Chip8::handle0(unsigned int bytes[4]){
     }else if(compBytes(bytes, "00EE")){
         std::cout<<"00EE"<<std::endl;
     }else if(compBytes(bytes, "0nnn")){
+        //supposedly ignored by modern interpreters
         std::cout<<"0nnn"<<std::endl;
     }
 }

@@ -82,6 +82,9 @@ void InsProcessor::sne4xkk(uchar reg, uchar byte){
 
 void InsProcessor::se5xy0(uchar reg1, uchar reg2){
     //skip next instruction if V[reg1] == V[reg2]
+    if(*(V+reg1) == *(V+reg2)){
+        *(PC) += 2;
+    }
     std::cout<<"5xy0"<<std::endl;
 }
 

@@ -100,6 +100,7 @@ void InsProcessor::ld6xkk(uchar reg, uchar byte){
 
 void InsProcessor::add7xkk(uchar reg, uchar byte){
     // v[reg] += byte
+    *(V + reg) += byte;
     std::cout<<"7xkk"<<std::endl;
 }
 

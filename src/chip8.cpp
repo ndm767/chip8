@@ -29,6 +29,8 @@ void Chip8::loadRom(std::string rom, int start){
 }
 
 Chip8::Chip8(std::string romPath){
+    insProc = new InsProcessor(&memory[0], &V[0], &VI, &PC, &SP, &stack[0]);
+
     //store bitmap font in memory range 0x000-0x050
     uchar font[80] = {
         0xF0, 0x90, 0x90, 0x90, 0xF0, //0
@@ -65,7 +67,7 @@ Chip8::Chip8(std::string romPath){
 }
 
 Chip8::~Chip8(){
-
+    delete insProc;
 }
 
 void Chip8::run(){
@@ -177,9 +179,9 @@ bool Chip8::compBytes(usint bytes[4], std::string instr){
 
 void Chip8::handle0(usint bytes[4]){
     if(compBytes(bytes, "00E0")){
-        std::cout<<"00E0"<<std::endl;
+        insProc->cls00E0();
     }else if(compBytes(bytes, "00EE")){
-        std::cout<<"00EE"<<std::endl;
+        insProc->ret00EE();
     }else if(compBytes(bytes, "0nnn")){
         //supposedly ignored by modern interpreters
         std::cout<<"0nnn"<<std::endl;
@@ -188,121 +190,123 @@ void Chip8::handle0(usint bytes[4]){
 
 void Chip8::handle1(usint bytes[4]){
     //we already know its 1nnn
-    std::cout<<"1nnn"<<std::endl;
+    insProc->jp1nnn(0);
 }
 
 void Chip8::handle2(usint bytes[4]){
     //we already know its 2nnn
-    std::cout<<"2nnn"<<std::endl;
+    insProc->call2nnn(0);
 }
 
 void Chip8::handle3(usint bytes[4]){
     //we already know its 3xkk
-    std::cout<<"3xkk"<<std::endl;
+    insProc->se3xkk(0, 0);
 }
 
 void Chip8::handle4(usint bytes[4]){
     //we already know its 4xkk
-    std::cout<<"4xkk"<<std::endl;
+    insProc->sne4xkk(0, 0);
 }
 
 void Chip8::handle5(usint bytes[4]){
     if(compBytes(bytes, "5xy0")){
-        std::cout<<"5xy0"<<std::endl;
+        insProc->se5xy0(0, 0);
     }
 }
 
 void Chip8::handle6(usint bytes[4]){
     //we already know its 6xkk
-    std::cout<<"6xkk"<<std::endl;
+    insProc->ld6xkk(0, 0);
 }
 
 void Chip8::handle7(usint bytes[4]){
     //we already know its 7xkk
-    std::cout<<"7xkk"<<std::endl;
+    insProc->add7xkk(0, 0);
 }
 
 void Chip8::handle8(usint bytes[4]){
     if(compBytes(bytes, "8xy0")){
-        std::cout<<"8xy0"<<std::endl;
+        insProc->ld8xy0(0, 0);
     }else if(compBytes(bytes, "8xy1")){
-        std::cout<<"8xy1"<<std::endl;
+        insProc->or8xy1(0, 0);
     }else if(compBytes(bytes, "8xy2")){
-        std::cout<<"8xy2"<<std::endl;
+        insProc->and8xy2(0, 0);
     }else if(compBytes(bytes, "8xy3")){
-        std::cout<<"8xy3"<<std::endl;
+        insProc->xor8xy3(0, 0);
     }else if(compBytes(bytes, "8xy4")){
-        std::cout<<"8xy4"<<std::endl;
+        insProc->add8xy4(0, 0);
     }else if(compBytes(bytes, "8xy5")){
-        std::cout<<"8xy5"<<std::endl;
+        insProc->sub8xy5(0, 0);
     }else if(compBytes(bytes, "8xy6")){
-        std::cout<<"8xy6"<<std::endl;
+        insProc->shr8xy6(0, 0);
     }else if(compBytes(bytes, "8xy7")){
-        std::cout<<"8xy7"<<std::endl;
+        insProc->subn8xy7(0, 0);
     }else if(compBytes(bytes, "8xyE")){
-        std::cout<<"8xyE"<<std::endl;
+        insProc->shl8xyE(0, 0);
     }
 
 }
 
 void Chip8::handle9(usint bytes[4]){
     if(compBytes(bytes, "9xy0")){
-        std::cout<<"9xy0"<<std::endl;
+        insProc->sne9xy0(0, 0);
     }
 }
 
 void Chip8::handleA(usint bytes[4]){
     //we already know its Annn
-    std::cout<<"Annn"<<std::endl;
+    insProc->ldAnnn(0);
 }
 
 void Chip8::handleB(usint bytes[4]){
     //we already know its Bnnn
-    std::cout<<"Bnnn"<<std::endl;
+    insProc->jpBnnn(0);
 }
 
 void Chip8::handleC(usint bytes[4]){
     //we already know its Cxkk
-    std::cout<<"Cxkk"<<std::endl;
+    insProc->rndCxkk(0, 0);
 }
 
 void Chip8::handleD(usint bytes[4]){
     //we already know its Dxyn
-    std::cout<<"Dxyn"<<std::endl;
+    insProc->drwDxyn(0, 0, 0);
 }
 
 void Chip8::handleE(usint bytes[4]){
-    if(compBytes(bytes, "ExA1")){
-        std::cout<<"ExA1"<<std::endl;
+    if(compBytes(bytes, "Ex9E")){
+        insProc->skpEx9E(0);
+    }else if(compBytes(bytes, "ExA1")){
+        insProc->sknpExA1(0);
     }
 }
 
 void Chip8::handleF(usint bytes[4]){
     if(compBytes(bytes, "Fx07")){
-        std::cout<<"Fx07"<<std::endl;
+        insProc->ldFx07(0);
     }
     if(compBytes(bytes, "Fx0A")){
-        std::cout<<"Fx0A"<<std::endl;
+        insProc->ldFx0A(0);
     }
     if(compBytes(bytes, "Fx15")){
-        std::cout<<"Fx15"<<std::endl;
+        insProc->ldFx15(0);
     }
     if(compBytes(bytes, "Fx18")){
-        std::cout<<"Fx18"<<std::endl;
+        insProc->ldFx18(0);
     }
     if(compBytes(bytes, "Fx1E")){
-        std::cout<<"Fx1E"<<std::endl;
+        insProc->addFx1E(0);
     }
     if(compBytes(bytes, "Fx29")){
-        std::cout<<"Fx29"<<std::endl;
+        insProc->ldFx29(0);
     }
     if(compBytes(bytes, "Fx33")){
-        std::cout<<"Fx33"<<std::endl;
+        insProc->ldFx33(0);
     }
     if(compBytes(bytes, "Fx55")){
-        std::cout<<"Fx55"<<std::endl;
+        insProc->ldFx55(0);
     }
     if(compBytes(bytes, "Fx65")){
-        std::cout<<"Fx65"<<std::endl;
+        insProc->ldFx65(0);
     }
 }

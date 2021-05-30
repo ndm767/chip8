@@ -1,9 +1,7 @@
 #pragma once
 
 #include <string>
-
-typedef unsigned char uchar;
-typedef unsigned short int usint;
+#include "insProcessor.h"
 
 class Chip8{
 public:
@@ -15,6 +13,8 @@ private:
     void loadRom(std::string rom, int start);
 
     void processInstructions(uchar byte1, uchar byte2);
+
+    InsProcessor *insProc;
 
     uchar memory[0xFFF+1];
 
@@ -48,28 +48,4 @@ private:
     //utility functions
     bool compBytes(usint bytes[4], std::string instr);
     usint c2u(char c);
-
-    //actual opcode instructions
-    //prefix 0
-    void cls(); //clear display
-    void ret(); //return from subroutine
-    
-    //prefix 1
-    void jp(usint addr); //jump to location addr
-
-    //prefix 2
-    void call(usint addr); //call subroutine at addr
-
-    //prefix 3
-    void se3xkk(uchar reg, uchar byte); //skip next instruction if v[reg] == byte
-
-    //prefix 4
-    void sne4xkk(uchar reg, uchar byte); //skip next instruction if v[reg] != byte
-
-    //prefix 5
-    void se5xy0(uchar reg1, uchar reg2); //skip next instruction if V[reg1] == V[reg2]
-
-    //prefix 6
-    void ld6xkk(uchar reg, uchar byte); //set v[reg] = byte
-
 };

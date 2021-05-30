@@ -73,7 +73,7 @@ void Chip8::run(){
         unsigned char byte1 = memory[PC];
         unsigned char byte2 = memory[PC+1];
         
-        std::cout<<std::hex<<static_cast<int>(byte1)<<" "<<std::hex<<static_cast<int>(byte2)<<": ";
+        std::cout<<std::hex<<static_cast<int>(byte1)<<" "<<static_cast<int>(byte2)<<": ";
         processInstructions(byte1, byte2);
 
         if(PC > 0xFFF){
@@ -86,64 +86,155 @@ void Chip8::run(){
 
 void Chip8::processInstructions(unsigned char byte1, unsigned char byte2){
 
-    unsigned char bytes[] = {
-        static_cast<unsigned char>((byte1>>4)&0xF),
-        static_cast<unsigned char>(byte1&0xF),
-        static_cast<unsigned char>((byte2>>4)&0xF),
-        static_cast<unsigned char>(byte2 & 0xF)
+    unsigned int bytes[] = {
+        static_cast<unsigned int>((byte1>>4)&0xF),
+        static_cast<unsigned int>(byte1&0xF),
+        static_cast<unsigned int>((byte2>>4)&0xF),
+        static_cast<unsigned int>(byte2 & 0xF)
     };
-
     switch(bytes[0]){
-    case 0x0:
-        handle0(bytes);
-        break;
-    case 0x1:
-        handle1(bytes);
-        break;
-    case 0x2:
-        handle2(bytes);
-        break;
-    case 0x3:
-        handle3(bytes);
-        break;
-    case 0x4:
-        handle4(bytes);
-        break;
-    case 0x5:
-        handle5(bytes);
-        break;
-    case 0x6:
-        handle6(bytes);
-        break;
-    case 0x7:
-        handle7(bytes);
-        break;
-    case 0x8:
-        handle8(bytes);
-        break;
-    case 0x9:
-        handle9(bytes);
-        break;
-    case 0xA:
-        handleA(bytes);
-        break;
-    case 0xB:
-        handleB(bytes);
-        break;
-    case 0xC:
-        handleC(bytes);
-        break;
-    case 0xD:
-        handleD(bytes);
-        break;
-    case 0xE:
-        handleE(bytes);
-        break;
-    case 0xF:
-        handleF(bytes);
-        break;
-    default:
-        std::cout<<"Bad Opcode!"<<std::endl;
-        break;
+        case 0x0:
+            handle0(bytes);
+            break;
+        case 0x1:
+            handle1(bytes);
+            break;
+        case 0x2:
+            handle2(bytes);
+            break;
+        case 0x3:
+            handle3(bytes);
+            break;
+        case 0x4:
+            handle4(bytes);
+            break;
+        case 0x5:
+            handle5(bytes);
+            break;
+        case 0x6:
+            handle6(bytes);
+            break;
+        case 0x7:
+            handle7(bytes);
+            break;
+        case 0x8:
+            handle8(bytes);
+            break;
+        case 0x9:
+            handle9(bytes);
+            break;
+        case 0xA:
+            handleA(bytes);
+            break;
+        case 0xB:
+            handleB(bytes);
+            break;
+        case 0xC:
+            handleC(bytes);
+            break;
+        case 0xD:
+            handleD(bytes);
+            break;
+        case 0xE:
+            handleE(bytes);
+            break;
+        case 0xF:
+            handleF(bytes);
+            break;
+        default:
+            std::cout<<"Bad Opcode!"<<std::endl;
+            break;
     }
+}
+
+unsigned int Chip8::c2u(char c){
+    unsigned int t = static_cast<unsigned int>(c);
+    if(c >= 48 && c <= 57)
+        return t - 48;
+    if( c >= 65 && c <= 70)
+        return t - 55;
+    return t;
+}
+
+bool Chip8::compBytes(unsigned int bytes[4], std::string instr){
+    //compares a set of bytes to the instruction
+    if(instr.length() != 4){
+        return false;
+    }
+    const char* ins = instr.c_str();
+
+    for(int i = 0; i<4; i++){
+        if(c2u(ins[i]) != bytes[i]){
+            //check if it isn't a placeholder character
+            if(ins[i] != 'n' && ins[i] != 'x' && ins[i] != 'y' && ins[i] != 'k'){
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+void Chip8::handle0(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handle1(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handle2(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handle3(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handle4(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handle5(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handle6(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handle7(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handle8(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handle9(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handleA(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handleB(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handleC(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handleD(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handleE(unsigned int bytes[4]){
+    
+}
+
+void Chip8::handleF(unsigned int bytes[4]){
+    
 }

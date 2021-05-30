@@ -25,20 +25,24 @@ private:
 
     bool running;
 
-    void handle0(unsigned char bytes[4]);
-    void handle1(unsigned char bytes[4]);
-    void handle2(unsigned char bytes[4]);
-    void handle3(unsigned char bytes[4]);
-    void handle4(unsigned char bytes[4]);
-    void handle5(unsigned char bytes[4]);
-    void handle6(unsigned char bytes[4]);
-    void handle7(unsigned char bytes[4]);
-    void handle8(unsigned char bytes[4]);
-    void handle9(unsigned char bytes[4]);
-    void handleA(unsigned char bytes[4]);
-    void handleB(unsigned char bytes[4]);
-    void handleC(unsigned char bytes[4]);
-    void handleD(unsigned char bytes[4]);
-    void handleE(unsigned char bytes[4]);
-    void handleF(unsigned char bytes[4]);
+    void handle0(unsigned int bytes[4]);
+    void handle1(unsigned int bytes[4]);
+    void handle2(unsigned int bytes[4]);
+    void handle3(unsigned int bytes[4]);
+    void handle4(unsigned int bytes[4]);
+    void handle5(unsigned int bytes[4]);
+    void handle6(unsigned int bytes[4]);
+    void handle7(unsigned int bytes[4]);
+    void handle8(unsigned int bytes[4]);
+    void handle9(unsigned int bytes[4]);
+    void handleA(unsigned int bytes[4]);
+    void handleB(unsigned int bytes[4]);
+    void handleC(unsigned int bytes[4]);
+    void handleD(unsigned int bytes[4]);
+    void handleE(unsigned int bytes[4]);
+    void handleF(unsigned int bytes[4]);
+
+    //utility functions
+    bool compBytes(unsigned int bytes[4], std::string instr);
+    unsigned int c2u(char c);
 };

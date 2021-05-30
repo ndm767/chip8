@@ -132,6 +132,11 @@ void InsProcessor::xor8xy3(uchar reg1, uchar reg2){
 
 void InsProcessor::add8xy4(uchar reg1, uchar reg2){
     //v[reg1] += v[reg2], v[f] carry
+    usint t = V[reg1] + V[reg2];
+    if(t > 255){
+        V[0xF] = 1;
+    }
+    V[reg1] = static_cast<uchar>(t&0xFF);
     std::cout<<"8xy4"<<std::endl;
 }
 

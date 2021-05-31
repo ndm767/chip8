@@ -156,7 +156,7 @@ void InsProcessor::shr8xy6(uchar reg1, uchar reg2){
     //store least significant bit in V[f]
     uchar lsb = *(V+reg1)&0x1;
     *(V + 0xF) = lsb;
-    *(V + reg1) = *(V+reg1)>>1;
+    *(V + reg1) = *(V+reg1)/2;
     std::cout<<"8xy6"<<std::endl;
 }
 
@@ -172,7 +172,11 @@ void InsProcessor::subn8xy7(uchar reg1, uchar reg2){
 }
 
 void InsProcessor::shl8xyE(uchar reg1, uchar reg2){
-    //v[reg1] = v[reg1] SHL 1
+    //v[reg1] = v[reg1] SHL 1 a.k.a v[reg1] << 1
+    //store most significant bit in V[f]
+    uchar msb = (*(V+reg1)>>7)&0x1;
+    *(V + 0xF) = msb;
+    *(V + reg1) = *(V+reg1)*2;
     std::cout<<"8xyE"<<std::endl;
 
 }

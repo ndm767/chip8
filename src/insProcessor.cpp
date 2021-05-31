@@ -221,6 +221,31 @@ void InsProcessor::rndCxkk(uchar reg, uchar byte){
 
 void InsProcessor::drwDxyn(uchar reg1, uchar reg2, uchar n){
     //display n-byte sprite starting at memory location VI at (V[reg1], V[reg2]), set VF = collision
+    int x = *(V+reg1);
+    int y = *(V+reg2);
+    for(uchar i = 0; i<n; i++){
+        uchar curr = *(memory + *VI + i);
+        for(int j = 0; j<8; j++){
+            int val = (curr>>j)&0x1;
+            int cX = x;
+            int cY = y;
+            //for screen wrapping
+            if(cX > 64){
+                cX -= 64;
+            }else if(cX < 0){
+                cX += 64;
+            }
+            if(cY > 64){
+                cY -= 64;
+            }else if(cY < 0){
+                cY += 64;
+            }
+            display->xorAtPos(cX, cY, val);
+            y++;
+        }
+        y = *(V+reg2);
+        x++;
+    }
     std::cout<<"Dxyn"<<std::endl;
 }
 

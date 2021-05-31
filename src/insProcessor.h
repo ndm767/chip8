@@ -8,7 +8,7 @@ typedef unsigned short int usint;
 /*
 TODO:
 Cxkk
-Dxyn
+fix bitmap font
 Ex9E
 ExA1
 Fx0A

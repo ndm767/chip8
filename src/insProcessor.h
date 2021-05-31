@@ -5,6 +5,19 @@
 typedef unsigned char uchar;
 typedef unsigned short int usint;
 
+/*
+TODO:
+Cxkk
+Dxyn
+Ex9E
+ExA1
+Fx07
+Fx0A
+Fx15
+Fx18
+Fx33
+*/
+
 class InsProcessor{
 private:
     uchar *memory;

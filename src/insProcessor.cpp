@@ -162,6 +162,12 @@ void InsProcessor::shr8xy6(uchar reg1, uchar reg2){
 
 void InsProcessor::subn8xy7(uchar reg1, uchar reg2){
     //v[reg1] = v[reg2]-v[reg1], vf = not borrow
+    //set borrow flag
+    if(*(V + reg2) > *(V+reg1)){
+        *(V + 0xF) = 1;
+    }
+    //Subtract with carry
+    *(V+reg1) = *(V+reg2) + (~*(V+reg1)) + *(V+0xF);
     std::cout<<"8xy7"<<std::endl;
 }
 

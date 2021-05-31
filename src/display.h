@@ -1,8 +1,10 @@
 #pragma once
 
+#include <SDL2/SDL.h>
+
 class Display{
 public:
-    Display();
+    Display(bool *r);
     ~Display();
 
     void startFrame();
@@ -13,4 +15,9 @@ public:
 private:
     int pixels[64][32];
     int scale;
+
+    bool *running;
+
+    SDL_Window *gWindow;
+    SDL_Renderer *gRenderer;
 };

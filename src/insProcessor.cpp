@@ -276,6 +276,9 @@ void InsProcessor::ldFx33(uchar reg){
 
 void InsProcessor::ldFx55(uchar reg){
     //store registers v[0]-v[x] in memory starting at I
+    for(uchar i = 0; i<=reg; i++){
+        *(memory + *VI + i) = *(V+i);
+    }
     std::cout<<"Fx55"<<std::endl;
 }
 

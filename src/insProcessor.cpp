@@ -284,5 +284,8 @@ void InsProcessor::ldFx55(uchar reg){
 
 void InsProcessor::ldFx65(uchar reg){
     //read registers v[0]-v[x] from memory starting at location I
+    for(uchar i = 0; i<= reg; i++){
+        *(V+i) = *(memory + *VI + i);
+    }
     std::cout<<"Fx65"<<std::endl;
 }

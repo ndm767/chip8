@@ -195,6 +195,7 @@ void InsProcessor::sne9xy0(uchar reg1, uchar reg2){
 
 void InsProcessor::ldAnnn(usint addr){
     //set VI = addr
+    *VI = addr&0xFFF;
     std::cout<<"Annn"<<std::endl;
 }
 

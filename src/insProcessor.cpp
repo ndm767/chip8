@@ -148,9 +148,13 @@ void InsProcessor::sub8xy5(uchar reg1, uchar reg2){
     //TODO check if this is right
     if(*(V + reg1) >= *(V+reg2)){
         *(V + 0xF) = 1;
+    }else{
+        *(V+0xF) = 0;
     }
+    std::cout<<static_cast<int>(*(V+reg1))<<" "<<static_cast<int>(*(V+reg2))<<" "<<static_cast<int>(*(V+0xF))<<std::endl;;
     //Subtract with carry
-    *(V+reg1) = *(V+reg1) + (~*(V+reg2)) + *(V+0xF);
+    *(V+reg1) = *(V+reg1) - (*(V+reg2));
+    std::cout<<static_cast<int>(*(V+reg1))<<std::endl;;
     //std::cout<<"8xy5"<<std::endl;
 }
 

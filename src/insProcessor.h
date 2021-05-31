@@ -9,7 +9,6 @@ typedef unsigned short int usint;
 TODO:
 Cxkk
 fix bitmap font
-potential error in 8xy7
 */
 
 class InsProcessor{

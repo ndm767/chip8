@@ -21,4 +21,3 @@ Escape closes the emulator
 
 - sound
 - lock to 60hz
-- custom screen size

@@ -208,12 +208,16 @@ void Chip8::handle2(usint bytes[4]){
 
 void Chip8::handle3(usint bytes[4]){
     //we already know its 3xkk
-    insProc->se3xkk(0, 0);
+    uchar reg = bytes[1]&0xF;
+    uchar b = ((bytes[2]&0xF)<<4)+(bytes[3]&0xF);
+    insProc->se3xkk(reg, b);
 }
 
 void Chip8::handle4(usint bytes[4]){
     //we already know its 4xkk
-    insProc->sne4xkk(0, 0);
+    uchar reg = bytes[1]&0xF;
+    uchar b = ((bytes[2]&0xF)<<4)+(bytes[3]&0xF);
+    insProc->sne4xkk(reg, b);
 }
 
 void Chip8::handle5(usint bytes[4]){
@@ -224,33 +228,39 @@ void Chip8::handle5(usint bytes[4]){
 
 void Chip8::handle6(usint bytes[4]){
     //we already know its 6xkk
-    insProc->ld6xkk(0, 0);
+    uchar reg = bytes[1]&0xF;
+    uchar b = ((bytes[2]&0xF)<<4)+(bytes[3]&0xF);
+    insProc->ld6xkk(reg, b);
 }
 
 void Chip8::handle7(usint bytes[4]){
     //we already know its 7xkk
-    insProc->add7xkk(0, 0);
+    uchar reg = bytes[1]&0xF;
+    uchar b = ((bytes[2]&0xF)<<4)+(bytes[3]&0xF);
+    insProc->add7xkk(reg, b);
 }
 
 void Chip8::handle8(usint bytes[4]){
+    uchar reg1 = bytes[1]&0xF;
+    uchar reg2 = bytes[2]&0xF;
     if(compBytes(bytes, "8xy0")){
-        insProc->ld8xy0(0, 0);
+        insProc->ld8xy0(reg1, reg2);
     }else if(compBytes(bytes, "8xy1")){
-        insProc->or8xy1(0, 0);
+        insProc->or8xy1(reg1, reg2);
     }else if(compBytes(bytes, "8xy2")){
-        insProc->and8xy2(0, 0);
+        insProc->and8xy2(reg1, reg2);
     }else if(compBytes(bytes, "8xy3")){
-        insProc->xor8xy3(0, 0);
+        insProc->xor8xy3(reg1, reg2);
     }else if(compBytes(bytes, "8xy4")){
-        insProc->add8xy4(0, 0);
+        insProc->add8xy4(reg1, reg2);
     }else if(compBytes(bytes, "8xy5")){
-        insProc->sub8xy5(0, 0);
+        insProc->sub8xy5(reg1, reg2);
     }else if(compBytes(bytes, "8xy6")){
-        insProc->shr8xy6(0, 0);
+        insProc->shr8xy6(reg1, reg2);
     }else if(compBytes(bytes, "8xy7")){
-        insProc->subn8xy7(0, 0);
+        insProc->subn8xy7(reg1, reg2);
     }else if(compBytes(bytes, "8xyE")){
-        insProc->shl8xyE(0, 0);
+        insProc->shl8xyE(reg1, reg2);
     }
 
 }
@@ -275,7 +285,9 @@ void Chip8::handleB(usint bytes[4]){
 
 void Chip8::handleC(usint bytes[4]){
     //we already know its Cxkk
-    insProc->rndCxkk(0, 0);
+    uchar reg = bytes[1]&0xF;
+    uchar b = ((bytes[2]&0xF)<<4)+(bytes[3]&0xF);
+    insProc->rndCxkk(reg, b);
 }
 
 void Chip8::handleD(usint bytes[4]){

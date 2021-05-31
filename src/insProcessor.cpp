@@ -264,6 +264,8 @@ void InsProcessor::addFx1E(uchar reg){
 
 void InsProcessor::ldFx29(uchar reg){
     //set I = location of sprite of digit v[reg]
+    uchar spr = *(V+reg);
+    *VI = spr*5;
     std::cout<<"Fx29"<<std::endl;
 }
 

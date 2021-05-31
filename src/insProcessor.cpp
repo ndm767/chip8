@@ -314,6 +314,17 @@ void InsProcessor::ldFx29(uchar reg){
 
 void InsProcessor::ldFx33(uchar reg){
     //store bcd representation of vx in memory locations I, I+1, I+2
+    int num = static_cast<int>(*(V+reg));
+    
+    int hundreds = (num - num%100)/100;
+    num = num%100;
+    int tens = (num - num%10)/10;
+    num = num%10;
+    int ones = num;
+
+    *(memory + *VI) = hundreds;
+    *(memory + *VI + 1) = tens;
+    *(memory + *VI + 2) = ones;
     //std::cout<<"Fx33"<<std::endl;
 }
 

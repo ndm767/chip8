@@ -152,7 +152,11 @@ void InsProcessor::sub8xy5(uchar reg1, uchar reg2){
 }
 
 void InsProcessor::shr8xy6(uchar reg1, uchar reg2){
-    //v[reg1] = v[reg1] SHR 1
+    //v[reg1] = v[reg1] SHR 1 a.k.a v[reg1] >> 1
+    //store least significant bit in V[f]
+    uchar lsb = *(V+reg1)&0x1;
+    *(V + 0xF) = lsb;
+    *(V + reg1) = *(V+reg1)>>1;
     std::cout<<"8xy6"<<std::endl;
 }
 

@@ -32,6 +32,7 @@ public:
     void clear();
     int xorAtPos(int x, int y, int val); //returns 1 if any pixels are erased
     bool getKeyPress(int key);
+    int getAnyKeyPress();
 private:
     int pixels[64][32];
     int scale;

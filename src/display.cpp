@@ -179,3 +179,12 @@ int Display::xorAtPos(int x, int y, int val){
 bool Display::getKeyPress(int key){
     return keysPressed[key];
 }
+
+int Display::getAnyKeyPress(){
+    for(int i = 0; i<=0xF; i++){
+        if(keysPressed[i]){
+            return i;
+        }
+    }
+    return -1;
+}

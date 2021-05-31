@@ -35,3 +35,4 @@ chip8
 # IDE stuff
 .vscode
 output.txt
+roms/

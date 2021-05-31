@@ -1,5 +1,7 @@
 #include "display.h"
 
+#include <thread>
+
 Display::Display(bool *r, int s){
     running = r;
     scale = s;
@@ -23,7 +25,7 @@ Display::~Display(){
 }
 
 void Display::startFrame(){
-    startTime = SDL_GetTicks();
+    startTime = std::chrono::high_resolution_clock::now();
     SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
     SDL_RenderClear(gRenderer);
 
@@ -157,9 +159,10 @@ void Display::endFrame(){
     }
 
     SDL_RenderPresent(gRenderer);
-    endTime = SDL_GetTicks();
-    if(endTime - startTime < 1000/60){
-        SDL_Delay(1000/60 - (endTime-startTime));
+    endTime = std::chrono::high_resolution_clock::now();
+    auto diff = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+    if(diff < 16667){
+        std::this_thread::sleep_for(std::chrono::microseconds(1667-diff));
     }
 }
 

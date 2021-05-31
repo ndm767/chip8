@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL2/SDL.h>
+#include <chrono>
 
 enum class Keys{    
     ZERO = SDL_SCANCODE_X,
@@ -41,7 +42,7 @@ private:
 
     bool keysPressed[0xF+1];
 
-    Uint32 startTime, endTime;
+    std::chrono::system_clock::time_point startTime, endTime;
 
     SDL_Window *gWindow;
     SDL_Renderer *gRenderer;

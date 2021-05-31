@@ -26,9 +26,11 @@ private:
     usint *PC;
     uchar *SP;
     usint *stack;
+    uchar *DT;
+    uchar *ST;
     Display *display;
 public:
-    InsProcessor(uchar *mem, uchar *V, usint *VI, usint *PC, uchar *SP, usint *stack, Display *d);
+    InsProcessor(uchar *mem, uchar *V, usint *VI, usint *PC, uchar *SP, usint *stack, uchar *DT, uchar *ST, Display *d);
     ~InsProcessor();
 
     //actual opcode instructions

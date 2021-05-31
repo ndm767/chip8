@@ -258,6 +258,7 @@ void InsProcessor::ldFx18(uchar reg){
 
 void InsProcessor::addFx1E(uchar reg){
     //VI += v[reg]
+    *(VI) += *(V + reg);
     std::cout<<"Fx1E"<<std::endl;
 }
 

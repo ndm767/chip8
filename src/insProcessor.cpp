@@ -240,6 +240,7 @@ void InsProcessor::sknpExA1(uchar reg){
 
 void InsProcessor::ldFx07(uchar reg){
     //set v[reg] = delay timer
+    *(V+reg) = *DT;
     std::cout<<"Fx07"<<std::endl;
 }
 
@@ -250,6 +251,7 @@ void InsProcessor::ldFx0A(uchar reg){
 
 void InsProcessor::ldFx15(uchar reg){
     //set delay timer = v[reg];
+    *DT = *(V+reg);
     std::cout<<"Fx15"<<std::endl;
 }
 

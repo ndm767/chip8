@@ -11,9 +11,7 @@ Cxkk
 Dxyn
 Ex9E
 ExA1
-Fx07
 Fx0A
-Fx15
 Fx18
 Fx33
 */

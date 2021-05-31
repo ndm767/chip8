@@ -8,7 +8,7 @@ Based upon [Cowgod's Chip-8 Reference](http://devernay.free.fr/hacks/chip8/C8TEC
 
 `./chip8 [path-to-rom]`
 
-## TODO
+## Yet to be done
 
 - sound
 - lock to 60hz

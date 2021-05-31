@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
 
     std::string romPath(argv[1]);
 
-    Chip8 emu(romPath);
+    Chip8 emu(romPath, 10);
     emu.run();
 
     return 0;

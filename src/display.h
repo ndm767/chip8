@@ -23,7 +23,7 @@ enum class Keys{
 
 class Display{
 public:
-    Display(bool *r);
+    Display(bool *r, int s);
     ~Display();
 
     void startFrame();

@@ -6,7 +6,7 @@
 
 class Chip8{
 public:
-    Chip8(std::string romPath);
+    Chip8(std::string romPath, int scale);
     ~Chip8();
 
     void run();

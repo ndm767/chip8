@@ -1,8 +1,8 @@
 #include "display.h"
 
-Display::Display(bool *r){
+Display::Display(bool *r, int s){
     running = r;
-    scale = 10;
+    scale = s;
     for(int x = 0; x<64; x++){
         for(int y = 0; y<32; y++){
             pixels[x][y] = 0;

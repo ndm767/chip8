@@ -1,6 +1,8 @@
 #include "insProcessor.h"
 
 #include <iostream>
+#include <random>
+#include <chrono>
 
 InsProcessor::InsProcessor(uchar *mem, uchar *V, usint *VI, usint *PC, uchar *SP, usint *stack, uchar* DT, uchar *ST, Display *d){
     this->memory = mem;
@@ -219,6 +221,10 @@ void InsProcessor::jpBnnn(usint addr){
 
 void InsProcessor::rndCxkk(uchar reg, uchar byte){
     //set v[reg] = randomByte AND byte
+    std::mt19937 gen;
+    gen.seed(std::chrono::system_clock::now().time_since_epoch().count());
+
+    *(V+reg) = static_cast<uchar>((gen()%256)&0xFF) & byte;
     //std::cout<<"Cxkk"<<std::endl;
 }
 

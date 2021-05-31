@@ -7,7 +7,6 @@ typedef unsigned short int usint;
 
 /*
 TODO:
-Cxkk
 fix bitmap font
 */
 

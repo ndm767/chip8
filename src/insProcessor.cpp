@@ -185,6 +185,9 @@ void InsProcessor::shl8xyE(uchar reg1, uchar reg2){
 
 void InsProcessor::sne9xy0(uchar reg1, uchar reg2){
     //skip next instruction if v[reg1] != v[reg2]
+    if(*(V+reg1) != *(V+reg2)){
+        *PC += 2;
+    }
     std::cout<<"9xy0"<<std::endl;
 }
 

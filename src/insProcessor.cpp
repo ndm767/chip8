@@ -145,7 +145,8 @@ void InsProcessor::add8xy4(uchar reg1, uchar reg2){
 void InsProcessor::sub8xy5(uchar reg1, uchar reg2){
     //v[reg1] -= v[reg2], v[f] = not borrow
     //set borrow flag
-    if(*(V + reg1) > *(V+reg2)){
+    //TODO check if this is right
+    if(*(V + reg1) >= *(V+reg2)){
         *(V + 0xF) = 1;
     }
     //Subtract with carry

@@ -89,6 +89,14 @@ void Chip8::run(){
         }
 
         PC += 2;
+        //update timer
+        //TODO make timer 60hz
+        if(DT != 0){
+            DT -= 1;
+        }
+        if(ST != 0){
+            ST -= 1;
+        }
     }   
 }
 

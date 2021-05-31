@@ -66,6 +66,11 @@ Chip8::Chip8(std::string romPath){
     //make the emulator loop
     running = true;
 
+    //initialize registers to 0
+    for(int i = 0; i<=0xF; i++){
+        V[i] = 0;
+    }
+
     //timers
     DT = 0;
     ST = 0;

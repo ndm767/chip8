@@ -222,7 +222,9 @@ void Chip8::handle4(usint bytes[4]){
 
 void Chip8::handle5(usint bytes[4]){
     if(compBytes(bytes, "5xy0")){
-        insProc->se5xy0(0, 0);
+        uchar reg1 = bytes[1]&0xF;
+        uchar reg2 = bytes[2]&0xF;
+        insProc->se5xy0(reg1, reg2);
     }
 }
 
@@ -267,7 +269,9 @@ void Chip8::handle8(usint bytes[4]){
 
 void Chip8::handle9(usint bytes[4]){
     if(compBytes(bytes, "9xy0")){
-        insProc->sne9xy0(0, 0);
+        uchar reg1 = bytes[1]&0xF;
+        uchar reg2 = bytes[2]&0xF;
+        insProc->sne9xy0(reg1, reg2);
     }
 }
 
@@ -292,43 +296,48 @@ void Chip8::handleC(usint bytes[4]){
 
 void Chip8::handleD(usint bytes[4]){
     //we already know its Dxyn
-    insProc->drwDxyn(0, 0, 0);
+    uchar reg1 = bytes[1]&0xF;
+    uchar reg2 = bytes[2]&0xF;
+    uchar nibble = bytes[3]&0xF;
+    insProc->drwDxyn(reg1, reg2, nibble);
 }
 
 void Chip8::handleE(usint bytes[4]){
+    uchar reg = bytes[1]&0xF;
     if(compBytes(bytes, "Ex9E")){
-        insProc->skpEx9E(0);
+        insProc->skpEx9E(reg);
     }else if(compBytes(bytes, "ExA1")){
-        insProc->sknpExA1(0);
+        insProc->sknpExA1(reg);
     }
 }
 
 void Chip8::handleF(usint bytes[4]){
+    uchar reg = bytes[1]&0xF;
     if(compBytes(bytes, "Fx07")){
-        insProc->ldFx07(0);
+        insProc->ldFx07(reg);
     }
     if(compBytes(bytes, "Fx0A")){
-        insProc->ldFx0A(0);
+        insProc->ldFx0A(reg);
     }
     if(compBytes(bytes, "Fx15")){
-        insProc->ldFx15(0);
+        insProc->ldFx15(reg);
     }
     if(compBytes(bytes, "Fx18")){
-        insProc->ldFx18(0);
+        insProc->ldFx18(reg);
     }
     if(compBytes(bytes, "Fx1E")){
-        insProc->addFx1E(0);
+        insProc->addFx1E(reg);
     }
     if(compBytes(bytes, "Fx29")){
-        insProc->ldFx29(0);
+        insProc->ldFx29(reg);
     }
     if(compBytes(bytes, "Fx33")){
-        insProc->ldFx33(0);
+        insProc->ldFx33(reg);
     }
     if(compBytes(bytes, "Fx55")){
-        insProc->ldFx55(0);
+        insProc->ldFx55(reg);
     }
     if(compBytes(bytes, "Fx65")){
-        insProc->ldFx65(0);
+        insProc->ldFx65(reg);
     }
 }

@@ -13,6 +13,7 @@ Ex9E
 ExA1
 Fx0A
 Fx33
+potential error in 8xy7
 */
 
 class InsProcessor{

@@ -9,8 +9,6 @@ typedef unsigned short int usint;
 TODO:
 Cxkk
 fix bitmap font
-Ex9E
-ExA1
 Fx0A
 Fx33
 potential error in 8xy7

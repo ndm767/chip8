@@ -253,11 +253,17 @@ void InsProcessor::drwDxyn(uchar reg1, uchar reg2, uchar n){
 
 void InsProcessor::skpEx9E(uchar reg){
     //skip next instruction if key with value of v[reg] is pressed
+    if(display->getKeyPress(static_cast<int>(*(V+reg)))){
+        *PC += 2;
+    }
     //std::cout<<"Ex9E"<<std::endl;
 }
 
 void InsProcessor::sknpExA1(uchar reg){
-    //skip next instruction if key with value of v[reg] is not pressed 
+    //skip next instruction if key with value of v[reg] is not pressed
+    if(!display->getKeyPress(static_cast<int>(*(V+reg)))){
+        *PC += 2;
+    } 
     //std::cout<<"ExA1"<<std::endl;
 }
 

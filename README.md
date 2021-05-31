@@ -15,6 +15,7 @@ A good source of roms is [dmatlack/chip8/roms](https://github.com/dmatlack/chip8
     q w e r -------> 4 5 6 D  
     a s d f -------> 7 8 9 E  
     z x c v          A 0 B F  
+Escape closes the emulator  
 
 ## Yet to be done
 

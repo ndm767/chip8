@@ -277,6 +277,13 @@ void InsProcessor::ldFx07(uchar reg){
 
 void InsProcessor::ldFx0A(uchar reg){
     //wait for key press and set v[reg] = key value
+    //repeat the instruction if the key is not pressed
+    int k = display->getAnyKeyPress();
+    if(k == -1){
+        *PC -= 2;
+    }else{
+        *(V+reg) = k;
+    }
     //std::cout<<"Fx0A"<<std::endl;
 }
 

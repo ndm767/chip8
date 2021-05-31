@@ -232,7 +232,7 @@ void InsProcessor::rndCxkk(uchar reg, uchar byte){
 
 void InsProcessor::drwDxyn(uchar reg1, uchar reg2, uchar n){
     //display n-byte sprite starting at memory location VI at (V[reg1], V[reg2]), set VF = collision
-    int x = *(V+reg1);
+    int x = *(V+reg1)+7;
     int y = *(V+reg2);
     for(uchar i = 0; i<n; i++){
         uchar curr = *(memory + *VI + i);
@@ -246,16 +246,16 @@ void InsProcessor::drwDxyn(uchar reg1, uchar reg2, uchar n){
             }else if(cX < 0){
                 cX += 64;
             }
-            if(cY > 64){
-                cY -= 64;
+            if(cY > 32){
+                cY -= 32;
             }else if(cY < 0){
-                cY += 64;
+                cY += 32;
             }
             display->xorAtPos(cX, cY, val);
-            y++;
+            x--;
         }
-        y = *(V+reg2);
-        x++;
+        x = *(V+reg1)+7;
+        y++;
     }
     //std::cout<<"Dxyn"<<std::endl;
 }

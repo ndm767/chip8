@@ -5,11 +5,6 @@
 typedef unsigned char uchar;
 typedef unsigned short int usint;
 
-/*
-TODO:
-fix bitmap font
-*/
-
 class InsProcessor{
 private:
     uchar *memory;

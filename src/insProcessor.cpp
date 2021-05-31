@@ -203,6 +203,8 @@ void InsProcessor::ldAnnn(usint addr){
 
 void InsProcessor::jpBnnn(usint addr){
     //jump to location addr+v[0]
+    //minus 2 to account for the PC incrementing at the end of this emulation cycle
+    *PC = addr + *(V) - 2;
     std::cout<<"Bnnn"<<std::endl;
 }
 

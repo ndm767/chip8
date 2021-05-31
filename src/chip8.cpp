@@ -87,7 +87,6 @@ void Chip8::run(){
         uchar byte1 = memory[PC];
         uchar byte2 = memory[PC+1];
         
-        //std::cout<<std::hex<<static_cast<int>(byte1)<<" "<<static_cast<int>(byte2)<<": ";
         processInstructions(byte1, byte2);
 
         if(PC > 0xFFF){

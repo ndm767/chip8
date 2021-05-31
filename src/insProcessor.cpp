@@ -257,6 +257,7 @@ void InsProcessor::ldFx15(uchar reg){
 
 void InsProcessor::ldFx18(uchar reg){
     //set sound timer = v[reg];
+    *ST = *(V+reg);
     std::cout<<"Fx18"<<std::endl;
 }
 

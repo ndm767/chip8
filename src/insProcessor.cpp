@@ -151,10 +151,8 @@ void InsProcessor::sub8xy5(uchar reg1, uchar reg2){
     }else{
         *(V+0xF) = 0;
     }
-    std::cout<<static_cast<int>(*(V+reg1))<<" "<<static_cast<int>(*(V+reg2))<<" "<<static_cast<int>(*(V+0xF))<<std::endl;;
     //Subtract with carry
     *(V+reg1) = *(V+reg1) - (*(V+reg2));
-    std::cout<<static_cast<int>(*(V+reg1))<<std::endl;;
     //std::cout<<"8xy5"<<std::endl;
 }
 
@@ -170,11 +168,13 @@ void InsProcessor::shr8xy6(uchar reg1, uchar reg2){
 void InsProcessor::subn8xy7(uchar reg1, uchar reg2){
     //v[reg1] = v[reg2]-v[reg1], vf = not borrow
     //set borrow flag
-    if(*(V + reg2) > *(V+reg1)){
+    if(*(V + reg2) >= *(V+reg1)){
         *(V + 0xF) = 1;
+    }else{
+        *(V+0xF) = 0;
     }
     //Subtract with carry
-    *(V+reg1) = *(V+reg2) + (~*(V+reg1)) + *(V+0xF);
+    *(V+reg1) = *(V+reg2) - (*(V+reg1));
     //std::cout<<"8xy7"<<std::endl;
 }
 

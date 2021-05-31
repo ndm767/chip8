@@ -41,6 +41,8 @@ private:
 
     bool keysPressed[0xF+1];
 
+    Uint32 startTime, endTime;
+
     SDL_Window *gWindow;
     SDL_Renderer *gRenderer;
 };

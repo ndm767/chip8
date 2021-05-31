@@ -20,4 +20,3 @@ Escape closes the emulator
 ## Yet to be done
 
 - sound
-- lock to 60hz

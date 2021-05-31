@@ -23,6 +23,7 @@ Display::~Display(){
 }
 
 void Display::startFrame(){
+    startTime = SDL_GetTicks();
     SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
     SDL_RenderClear(gRenderer);
 
@@ -156,6 +157,10 @@ void Display::endFrame(){
     }
 
     SDL_RenderPresent(gRenderer);
+    endTime = SDL_GetTicks();
+    if(endTime - startTime < 1000/60){
+        SDL_Delay(1000/60 - (endTime-startTime));
+    }
 }
 
 void Display::clear(){
